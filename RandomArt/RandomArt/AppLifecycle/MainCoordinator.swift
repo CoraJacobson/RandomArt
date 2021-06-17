@@ -24,6 +24,15 @@ class MainCoordinator: Coordinator {
         setUpAppNavViews()
     }
     
+    func presentDepartmentVC() {
+        let departmentVC = DepartmentVC()
+        departmentVC.coordinator = self
+        navController.pushViewController(departmentVC, animated: true)
+    }
+    
+    func presentDetailView(department: Department) {
+    }
+    
     // MARK: - Private Functions
     
     private func setUpAppNavViews() {

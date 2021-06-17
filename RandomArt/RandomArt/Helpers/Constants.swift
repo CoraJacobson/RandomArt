@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum ReuseIdentifier {
+    static let departmentCell = "DepartmentCell"
+}
+
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"

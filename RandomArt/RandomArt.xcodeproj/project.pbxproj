@@ -20,6 +20,8 @@
 		1A3F174C267BAE6E00F6CD70 /* Department+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F174B267BAE6E00F6CD70 /* Department+Convenience.swift */; };
 		1A3F174E267BAF1A00F6CD70 /* DepartmentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F174D267BAF1A00F6CD70 /* DepartmentRepresentation.swift */; };
 		1A3F1750267BB0C900F6CD70 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F174F267BB0C900F6CD70 /* Constants.swift */; };
+		1A3F1752267BB9CD00F6CD70 /* DepartmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1751267BB9CD00F6CD70 /* DepartmentVC.swift */; };
+		1A3F1755267BBC4100F6CD70 /* DepartmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1754267BBC4100F6CD70 /* DepartmentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		1A3F174B267BAE6E00F6CD70 /* Department+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Department+Convenience.swift"; sourceTree = "<group>"; };
 		1A3F174D267BAF1A00F6CD70 /* DepartmentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentRepresentation.swift; sourceTree = "<group>"; };
 		1A3F174F267BB0C900F6CD70 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1A3F1751267BB9CD00F6CD70 /* DepartmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentVC.swift; sourceTree = "<group>"; };
+		1A3F1754267BBC4100F6CD70 /* DepartmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 			children = (
 				1A3F1745267BAD2100F6CD70 /* Models */,
 				1A3F1742267BAC8100F6CD70 /* ModelController */,
+				1A3F1753267BBC2200F6CD70 /* Views */,
 				1A3F1739267B9F7600F6CD70 /* ViewControllers */,
 				1A3F1738267B9F4800F6CD70 /* Helpers */,
 				1A3F1737267B9F2C00F6CD70 /* AppLifecycle */,
@@ -105,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				1A3F1740267B9FEB00F6CD70 /* HomeVC.swift */,
+				1A3F1751267BB9CD00F6CD70 /* DepartmentVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -126,6 +132,14 @@
 				1A3F174D267BAF1A00F6CD70 /* DepartmentRepresentation.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		1A3F1753267BBC2200F6CD70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1A3F1754267BBC4100F6CD70 /* DepartmentCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A3F1755267BBC4100F6CD70 /* DepartmentCell.swift in Sources */,
 				1A3F1724267B9DE800F6CD70 /* AppDelegate.swift in Sources */,
 				1A3F1750267BB0C900F6CD70 /* Constants.swift in Sources */,
+				1A3F1752267BB9CD00F6CD70 /* DepartmentVC.swift in Sources */,
 				1A3F1741267B9FEB00F6CD70 /* HomeVC.swift in Sources */,
 				1A3F1748267BAD4300F6CD70 /* RandomArt.xcdatamodeld in Sources */,
 				1A3F1744267BACB000F6CD70 /* ApiController.swift in Sources */,

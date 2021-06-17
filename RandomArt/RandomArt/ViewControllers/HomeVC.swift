@@ -26,9 +26,24 @@ class HomeVC: UIViewController {
         setUpViews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     // MARK: - Actions
     
     @objc func enterTapped() {
+        coordinator?.apiController.fetchDepartments(completion: { result in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    self.coordinator?.presentDepartmentVC()
+                }
+            default:
+                print("Error fetching departments")
+            }
+        })
     }
     
     // MARK: - Private Functions
