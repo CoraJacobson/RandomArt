@@ -12,12 +12,13 @@ class MainCoordinator: Coordinator {
     // MARK: - Properties
     
     var navController: UINavigationController
+    var apiController = ApiController()
     
     init(navController: UINavigationController) {
         self.navController = navController
     }
     
-    // MARK: - General Functions
+    // MARK: - Public Functions
 
     func start() {
         setUpAppNavViews()

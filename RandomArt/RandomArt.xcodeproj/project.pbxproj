@@ -14,6 +14,12 @@
 		1A3F173D267B9FBC00F6CD70 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F173C267B9FBC00F6CD70 /* Coordinator.swift */; };
 		1A3F173F267B9FCD00F6CD70 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F173E267B9FCD00F6CD70 /* MainCoordinator.swift */; };
 		1A3F1741267B9FEB00F6CD70 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1740267B9FEB00F6CD70 /* HomeVC.swift */; };
+		1A3F1744267BACB000F6CD70 /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1743267BACB000F6CD70 /* ApiController.swift */; };
+		1A3F1748267BAD4300F6CD70 /* RandomArt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1746267BAD4300F6CD70 /* RandomArt.xcdatamodeld */; };
+		1A3F174A267BAD6C00F6CD70 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1749267BAD6C00F6CD70 /* CoreDataStack.swift */; };
+		1A3F174C267BAE6E00F6CD70 /* Department+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F174B267BAE6E00F6CD70 /* Department+Convenience.swift */; };
+		1A3F174E267BAF1A00F6CD70 /* DepartmentRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F174D267BAF1A00F6CD70 /* DepartmentRepresentation.swift */; };
+		1A3F1750267BB0C900F6CD70 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F174F267BB0C900F6CD70 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		1A3F173C267B9FBC00F6CD70 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1A3F173E267B9FCD00F6CD70 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		1A3F1740267B9FEB00F6CD70 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		1A3F1743267BACB000F6CD70 /* ApiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
+		1A3F1747267BAD4300F6CD70 /* RandomArt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RandomArt.xcdatamodel; sourceTree = "<group>"; };
+		1A3F1749267BAD6C00F6CD70 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		1A3F174B267BAE6E00F6CD70 /* Department+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Department+Convenience.swift"; sourceTree = "<group>"; };
+		1A3F174D267BAF1A00F6CD70 /* DepartmentRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentRepresentation.swift; sourceTree = "<group>"; };
+		1A3F174F267BB0C900F6CD70 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,8 @@
 		1A3F1722267B9DE800F6CD70 /* RandomArt */ = {
 			isa = PBXGroup;
 			children = (
+				1A3F1745267BAD2100F6CD70 /* Models */,
+				1A3F1742267BAC8100F6CD70 /* ModelController */,
 				1A3F1739267B9F7600F6CD70 /* ViewControllers */,
 				1A3F1738267B9F4800F6CD70 /* Helpers */,
 				1A3F1737267B9F2C00F6CD70 /* AppLifecycle */,
@@ -82,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				1A3F173C267B9FBC00F6CD70 /* Coordinator.swift */,
+				1A3F174F267BB0C900F6CD70 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -92,6 +107,25 @@
 				1A3F1740267B9FEB00F6CD70 /* HomeVC.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1A3F1742267BAC8100F6CD70 /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				1A3F1743267BACB000F6CD70 /* ApiController.swift */,
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
+		1A3F1745267BAD2100F6CD70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1A3F1746267BAD4300F6CD70 /* RandomArt.xcdatamodeld */,
+				1A3F1749267BAD6C00F6CD70 /* CoreDataStack.swift */,
+				1A3F174B267BAE6E00F6CD70 /* Department+Convenience.swift */,
+				1A3F174D267BAF1A00F6CD70 /* DepartmentRepresentation.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,10 +198,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A3F1724267B9DE800F6CD70 /* AppDelegate.swift in Sources */,
+				1A3F1750267BB0C900F6CD70 /* Constants.swift in Sources */,
 				1A3F1741267B9FEB00F6CD70 /* HomeVC.swift in Sources */,
+				1A3F1748267BAD4300F6CD70 /* RandomArt.xcdatamodeld in Sources */,
+				1A3F1744267BACB000F6CD70 /* ApiController.swift in Sources */,
+				1A3F174C267BAE6E00F6CD70 /* Department+Convenience.swift in Sources */,
 				1A3F173F267B9FCD00F6CD70 /* MainCoordinator.swift in Sources */,
 				1A3F1726267B9DE800F6CD70 /* SceneDelegate.swift in Sources */,
 				1A3F173D267B9FBC00F6CD70 /* Coordinator.swift in Sources */,
+				1A3F174E267BAF1A00F6CD70 /* DepartmentRepresentation.swift in Sources */,
+				1A3F174A267BAD6C00F6CD70 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +403,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1A3F1746267BAD4300F6CD70 /* RandomArt.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1A3F1747267BAD4300F6CD70 /* RandomArt.xcdatamodel */,
+			);
+			currentVersion = 1A3F1747267BAD4300F6CD70 /* RandomArt.xcdatamodel */;
+			path = RandomArt.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1A3F1718267B9DE700F6CD70 /* Project object */;
 }
