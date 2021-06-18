@@ -30,7 +30,11 @@ class MainCoordinator: Coordinator {
         navController.pushViewController(departmentVC, animated: true)
     }
     
-    func presentDetailView(department: Department) {
+    func presentDetailVC(department: Department) {
+        let detailVC = DetailVC()
+        detailVC.coordinator = self
+        detailVC.department = department
+        navController.pushViewController(detailVC, animated: true)
     }
     
     // MARK: - Private Functions

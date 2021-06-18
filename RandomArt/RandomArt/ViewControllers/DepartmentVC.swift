@@ -43,16 +43,8 @@ class DepartmentVC: UIViewController {
         view.backgroundColor = .blue
         title = "Departments"
         
-        infoLabel.translatesAutoresizingMaskIntoConstraints = false
-        infoLabel.text = "Please select a department"
-        infoLabel.font = UIFont(name: "Optima-Regular", size: 25)
-        infoLabel.numberOfLines = 0
-        infoLabel.textAlignment = .center
-        infoLabel.textColor = .white
-        view.addSubview(infoLabel)
+        infoLabel.setUpLabel(textString: "Please select a department", fontSize: 25, color: .white, view: view)
         infoLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        infoLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
-        infoLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
         
         subView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(subView)
@@ -112,6 +104,6 @@ extension DepartmentVC: NSFetchedResultsControllerDelegate {
 extension DepartmentVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedDepartment = datasource.itemIdentifier(for: indexPath) else { return }
-        coordinator?.presentDetailView(department: selectedDepartment)
+        coordinator?.presentDetailVC(department: selectedDepartment)
     }
 }

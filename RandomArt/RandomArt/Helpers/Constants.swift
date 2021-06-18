@@ -11,6 +11,14 @@ enum ReuseIdentifier {
     static let departmentCell = "DepartmentCell"
 }
 
+enum Fonts: String {
+    case noteworthyBold = "Noteworthy-Bold"
+    case optimaReg = "Optima-Regular"
+    case optimaBold = "Optima-Bold"
+    case optimaBoldItalic = "Optima-BoldItalic"
+    case optimaItalic = "Optima-Italic"
+}
+
 enum HTTPMethod: String {
     case get = "GET"
     case post = "POST"
@@ -24,7 +32,7 @@ enum NetworkError: Error {
     case failedResponse
     case noData
     case failedDecoding
-    case failedEncoding
+    case failedRequestSetUp
     case tryAgain
     case otherError
 }

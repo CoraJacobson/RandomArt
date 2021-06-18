@@ -5,7 +5,7 @@
 //  Created by Cora Jacobson on 6/17/21.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class ApiController {
@@ -13,10 +13,12 @@ class ApiController {
     // MARK: - Properties
     
     let moc = CoreDataStack.shared.mainContext
+    var usedIDs: [Int: String] = [-1: "Control"]
     
     private let baseURL = URL(string: "https://collectionapi.metmuseum.org/public/collection/v1")!
     private lazy var departmentURL = baseURL.appendingPathComponent("/departments")
-    
+    private lazy var objectsURL = baseURL.appendingPathComponent("/objects")
+
     // MARK: - Public Functions
     
     func fetchDepartments(completion: @escaping (Result<[Department], NetworkError>) -> Void) {
@@ -26,7 +28,10 @@ class ApiController {
             guard !departments.isEmpty else { throw CoreDataError.empty }
             completion(.success(departments))
         } catch {
-            let request = getRequest(url: departmentURL, urlPathComponent: nil)
+            guard let request = getRequest(url: departmentURL, path: nil, queryKey: nil, queryValue: nil) else {
+                completion(.failure(.failedRequestSetUp))
+                return
+            }
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 self.checkResponse(for: "fetchDepartments", data, response, error) { result in
                     switch result {
@@ -53,17 +58,137 @@ class ApiController {
         }
     }
     
+    func fetchArt(department: Department, completion: @escaping (Result<Artwork, NetworkError>) -> Void) {
+        fetchObjectIDs(department: department) { result in
+            switch result {
+            case .success(let IDs):
+                self.fetchArtwork(objectIDs: IDs) { newResult in
+                    switch newResult {
+                    case .success(let artwork):
+                        completion(.success(artwork))
+                    default:
+                        completion(.failure(.failedResponse))
+                    }
+                }
+            default:
+                completion(.failure(.failedResponse))
+                return
+            }
+        }
+    }
+    
+    func fetchObjectIDs(department: Department, completion: @escaping (Result<[Int64], NetworkError>) -> Void) {
+        if let objectIDs = department.objectIDs, !objectIDs.isEmpty {
+            completion(.success(objectIDs))
+            return
+        }
+        guard let request = getRequest(url: objectsURL, path: nil, queryKey: "departmentIds", queryValue: String(Int(department.departmentId))) else {
+            completion(.failure(.failedRequestSetUp))
+            return
+        }
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            self.checkResponse(for: "fetchObjectIDs", data, response, error) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let objectIDs = try JSONDecoder().decode(ObjectIDs.self, from: data)
+                        department.objectIDs = objectIDs.objectIDs
+                        self.saveMOC()
+                        completion(.success(objectIDs.objectIDs))
+                    } catch {
+                        NSLog("Error decoding objectIDs: \(error)")
+                        completion(.failure(.failedDecoding))
+                    }
+                default:
+                    completion(.failure(.failedResponse))
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchArtwork(objectIDs: [Int64], completion: @escaping (Result<Artwork, NetworkError>) -> Void) {
+        var randomIndex = -1
+        var count = 0
+        while usedIDs[randomIndex] != nil {
+            if count > 100 {
+                break
+            }
+            randomIndex = Int.random(in: 0..<objectIDs.count)
+            count += 1
+        }
+        guard randomIndex != -1 else {
+            completion(.failure(.otherError))
+            return
+        }
+        let objectID = String(objectIDs[randomIndex])
+        guard let request = getRequest(url: objectsURL, path: objectID, queryKey: nil, queryValue: nil) else {
+            completion(.failure(.failedRequestSetUp))
+            return
+        }
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            self.checkResponse(for: "fetchArtwork", data, response, error) { result in
+                switch result {
+                case .success(let data):
+                    do {
+                        let artwork = try JSONDecoder().decode(Artwork.self, from: data)
+                        self.usedIDs[artwork.objectID] = artwork.primaryImage
+                        completion(.success(artwork))
+                    } catch {
+                        NSLog("Error decoding artwork: \(error)")
+                        completion(.failure(.failedDecoding))
+                    }
+                default:
+                    completion(.failure(.failedResponse))
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchImage(imageURL: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
+        guard let url = URL(string: imageURL) else {
+            completion(.failure(.failedRequestSetUp))
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.get.rawValue
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            self.checkResponse(for: "fetchImage", data, response, error) { result in
+                switch result {
+                case .success(let data):
+                    if let image = UIImage(data: data) {
+                        completion(.success(image))
+                    }
+                default:
+                    completion(.failure(.failedResponse))
+                }
+            }
+        }
+        task.resume()
+    }
+    
     // MARK: - Private Functions
     
-    /// Sets up a get request using a url and urlPathComponent
+    /// Sets up a get request using a url and optional key and value for a query item
     /// - Parameters:
     ///   - url: accepts the url
-    ///   - urlPathComponent: accepts an optional String to apply a urlPathComponent
-    /// - Returns: returns a get request after applying the path component and JSON extension
-    private func getRequest(url: URL, urlPathComponent: String?) -> URLRequest {
+    ///   - path: optional, accepts a String to add an appendingPathComponent
+    ///   - queryKey: optional, accepts a String key for the query item - example: "departmentIds"
+    ///   - queryValue: optional, accepts a String value for the query item - example: "1"
+    /// - Returns: returns a get request after applying path component, query item and JSON extension
+    private func getRequest(url: URL, path: String?, queryKey: String?, queryValue: String?) -> URLRequest? {
         var urlPath = url
-        if let path = urlPathComponent {
+        if let path = path {
             urlPath = url.appendingPathComponent(path)
+        }
+        if let key = queryKey,
+           let value = queryValue {
+            var component = URLComponents(url: url, resolvingAgainstBaseURL: true)
+            let queryItem = URLQueryItem(name: key, value: value)
+            component?.queryItems = [queryItem]
+            guard let newURL = component?.url else { return nil }
+            urlPath = newURL
         }
         var request = URLRequest(url: urlPath)
         request.httpMethod = HTTPMethod.get.rawValue

@@ -52,7 +52,7 @@ class DepartmentCell: UICollectionViewCell {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.textAlignment = .center
         nameLabel.numberOfLines = 0
-        nameLabel.font = UIFont(name: "Optima-Bold", size: 16)
+        nameLabel.font = UIFont(name: Fonts.optimaBold.rawValue, size: 16)
         contentView.addSubview(nameLabel)
         nameLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -10).isActive = true
         nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true

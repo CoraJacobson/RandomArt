@@ -52,35 +52,22 @@ class HomeVC: UIViewController {
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .purple
         
-        setUpLabel(label: welcomeLabel, text: "Welcome to\nRandomArt")
-        welcomeLabel.font = UIFont(name: "Noteworthy-Bold", size: 40)
+        welcomeLabel.setUpLabel(textString: "Welcome to\nRandomArt", fontName: Fonts.noteworthyBold.rawValue, fontSize: 40, color: .white, view: view)
         welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
         
-        setUpLabel(label: infoLabel, text: "randomly experience artwork from the Metropolitan Museum of Art Collection")
-        infoLabel.font = UIFont(name: "Optima-Regular", size: 25)
+        infoLabel.setUpLabel(textString: "randomly experience artwork from the Metropolitan Museum of Art Collection", fontSize: 25, color: .white, view: view)
         infoLabel.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 30).isActive = true
         
         enterButton.translatesAutoresizingMaskIntoConstraints = false
         enterButton.backgroundColor = .darkGray
         enterButton.setTitleColor(.white, for: .normal)
         enterButton.setTitle("Enter", for: .normal)
-        enterButton.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 30)
+        enterButton.titleLabel?.font = UIFont(name: Fonts.noteworthyBold.rawValue, size: 30)
         enterButton.contentEdgeInsets = UIEdgeInsets(top: 10, left: 30, bottom: 10, right: 30)
         enterButton.addTarget(self, action: #selector(enterTapped), for: .touchUpInside)
         view.addSubview(enterButton)
         enterButton.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 50).isActive = true
         enterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-    }
-    
-    private func setUpLabel(label: UILabel, text: String) {
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = text
-        label.numberOfLines = 0
-        label.textAlignment = .center
-        label.textColor = .white
-        view.addSubview(label)
-        label.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 30).isActive = true
-        label.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30).isActive = true
     }
 
 }

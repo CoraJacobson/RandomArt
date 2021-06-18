@@ -22,6 +22,9 @@
 		1A3F1750267BB0C900F6CD70 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F174F267BB0C900F6CD70 /* Constants.swift */; };
 		1A3F1752267BB9CD00F6CD70 /* DepartmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1751267BB9CD00F6CD70 /* DepartmentVC.swift */; };
 		1A3F1755267BBC4100F6CD70 /* DepartmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1754267BBC4100F6CD70 /* DepartmentCell.swift */; };
+		1A3F1757267BE24600F6CD70 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1756267BE24600F6CD70 /* DetailVC.swift */; };
+		1A3F1759267BE43F00F6CD70 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1758267BE43F00F6CD70 /* Artwork.swift */; };
+		1A3F175B267C13B000F6CD70 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F175A267C13AF00F6CD70 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,9 @@
 		1A3F174F267BB0C900F6CD70 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1A3F1751267BB9CD00F6CD70 /* DepartmentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentVC.swift; sourceTree = "<group>"; };
 		1A3F1754267BBC4100F6CD70 /* DepartmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentCell.swift; sourceTree = "<group>"; };
+		1A3F1756267BE24600F6CD70 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		1A3F1758267BE43F00F6CD70 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		1A3F175A267C13AF00F6CD70 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,7 @@
 			children = (
 				1A3F173C267B9FBC00F6CD70 /* Coordinator.swift */,
 				1A3F174F267BB0C900F6CD70 /* Constants.swift */,
+				1A3F175A267C13AF00F6CD70 /* UILabel+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -111,6 +118,7 @@
 			children = (
 				1A3F1740267B9FEB00F6CD70 /* HomeVC.swift */,
 				1A3F1751267BB9CD00F6CD70 /* DepartmentVC.swift */,
+				1A3F1756267BE24600F6CD70 /* DetailVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -130,6 +138,7 @@
 				1A3F1749267BAD6C00F6CD70 /* CoreDataStack.swift */,
 				1A3F174B267BAE6E00F6CD70 /* Department+Convenience.swift */,
 				1A3F174D267BAF1A00F6CD70 /* DepartmentRepresentation.swift */,
+				1A3F1758267BE43F00F6CD70 /* Artwork.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -219,11 +228,14 @@
 				1A3F1748267BAD4300F6CD70 /* RandomArt.xcdatamodeld in Sources */,
 				1A3F1744267BACB000F6CD70 /* ApiController.swift in Sources */,
 				1A3F174C267BAE6E00F6CD70 /* Department+Convenience.swift in Sources */,
+				1A3F175B267C13B000F6CD70 /* UILabel+Extension.swift in Sources */,
 				1A3F173F267B9FCD00F6CD70 /* MainCoordinator.swift in Sources */,
 				1A3F1726267B9DE800F6CD70 /* SceneDelegate.swift in Sources */,
+				1A3F1759267BE43F00F6CD70 /* Artwork.swift in Sources */,
 				1A3F173D267B9FBC00F6CD70 /* Coordinator.swift in Sources */,
 				1A3F174E267BAF1A00F6CD70 /* DepartmentRepresentation.swift in Sources */,
 				1A3F174A267BAD6C00F6CD70 /* CoreDataStack.swift in Sources */,
+				1A3F1757267BE24600F6CD70 /* DetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
