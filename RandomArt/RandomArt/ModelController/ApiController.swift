@@ -21,6 +21,10 @@ class ApiController {
 
     // MARK: - Public Functions
     
+    /// called in HomeVC when the user taps the Enter button, so that data is available for display in DepartmentVC
+    /// first checks if departments are already in CoreData and, if so, returns the saved department data
+    /// when network request is necessary to fetch departments, they are saved in CoreData upon success
+    /// - Parameter completion: upon success, returns an array - [Department]
     func fetchDepartments(completion: @escaping (Result<[Department], NetworkError>) -> Void) {
         let fetchRequest: NSFetchRequest<Department> = Department.fetchRequest()
         do {
@@ -58,6 +62,10 @@ class ApiController {
         }
     }
     
+    /// called in DetailVC to fetch a random artwork from the user's selected department
+    /// - Parameters:
+    ///   - department: accepts a Department
+    ///   - completion: upon success, returns an Artwork
     func fetchArt(department: Department, completion: @escaping (Result<Artwork, NetworkError>) -> Void) {
         fetchObjectIDs(department: department) { result in
             switch result {
@@ -77,6 +85,12 @@ class ApiController {
         }
     }
     
+    /// called in fetchArt to fetch a list of objectIDs for the user's selected department
+    /// first checks if objectIDs are already in CoreData for that department and, if so, returns the saved data
+    /// when network request is necessary to fetch objectIDs, they are saved in CoreData upon success
+    /// - Parameters:
+    ///   - department: accepts a Department
+    ///   - completion: upon success, returns an array - [Int64] for use in fetchArtwork
     func fetchObjectIDs(department: Department, completion: @escaping (Result<[Int64], NetworkError>) -> Void) {
         if let objectIDs = department.objectIDs, !objectIDs.isEmpty {
             completion(.success(objectIDs))
@@ -107,10 +121,17 @@ class ApiController {
         task.resume()
     }
     
+    /// called in fetchArt to randomly select an objectID and fetch the artwork data for display in DetailVC
+    /// checks to ensure that the same objectID has not already been used during the current user session
+    /// continues to randomly chose new objectIDs until a new one is found, up to a maximum of 100 attempts
+    /// saves the objectID in usedIDs along with the imageURL for use in the above check
+    /// - Parameters:
+    ///   - objectIDs: accepts an array of objectIDs, provided by fetchObjectIDs
+    ///   - completion: upon success, returns an Artwork
     func fetchArtwork(objectIDs: [Int64], completion: @escaping (Result<Artwork, NetworkError>) -> Void) {
-        var randomIndex = -1
+        var randomIndex = Int.random(in: 0..<objectIDs.count)
         var count = 0
-        while usedIDs[randomIndex] != nil {
+        while usedIDs[Int(objectIDs[randomIndex])] != nil {
             if count > 100 {
                 break
             }
@@ -146,6 +167,10 @@ class ApiController {
         task.resume()
     }
     
+    /// called in DetailVC to fetch the image associated with an Artwork
+    /// - Parameters:
+    ///   - imageURL: accepts a url String
+    ///   - completion: upon success, returns a UIImage
     func fetchImage(imageURL: String, completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
         guard let url = URL(string: imageURL) else {
             completion(.failure(.failedRequestSetUp))
