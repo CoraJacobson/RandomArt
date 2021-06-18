@@ -99,7 +99,7 @@ class DetailVC: UIViewController {
     }
     
     private func setUpViews() {
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .artPalePurple
         title = department?.displayName
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,7 +108,7 @@ class DetailVC: UIViewController {
         imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         imageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        imageView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        imageView.heightAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: 0.4).isActive = true
         
         noImageLabel.setUpLabel(textString: "No image was provided", fontName: Fonts.optimaBold.rawValue, fontSize: 25, view: view)
         noImageLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor).isActive = true

@@ -40,10 +40,10 @@ class DepartmentVC: UIViewController {
     // MARK: - Private Functions
     
     private func setUpViews() {
-        view.backgroundColor = .blue
+        view.backgroundColor = .artPalePurple
         title = "Departments"
         
-        infoLabel.setUpLabel(textString: "Please select a department", fontSize: 25, color: .white, view: view)
+        infoLabel.setUpLabel(textString: "Please select a department", fontName: Fonts.noteworthyBold.rawValue, fontSize: 25, color: .black, view: view)
         infoLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         
         subView.translatesAutoresizingMaskIntoConstraints = false

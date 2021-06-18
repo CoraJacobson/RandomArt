@@ -42,5 +42,8 @@ class MainCoordinator: Coordinator {
     private func setUpAppNavViews() {
         guard let homeVC = navController.topViewController as? HomeVC else { return }
         homeVC.coordinator = self
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().barTintColor = .artPurple
+        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: Fonts.noteworthyBold.rawValue, size: 20)!, NSAttributedString.Key.foregroundColor : UIColor.white]
     }
 }

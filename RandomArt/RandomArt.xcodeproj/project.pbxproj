@@ -25,6 +25,7 @@
 		1A3F1757267BE24600F6CD70 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1756267BE24600F6CD70 /* DetailVC.swift */; };
 		1A3F1759267BE43F00F6CD70 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F1758267BE43F00F6CD70 /* Artwork.swift */; };
 		1A3F175B267C13B000F6CD70 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F175A267C13AF00F6CD70 /* UILabel+Extension.swift */; };
+		1A3F175D267C201000F6CD70 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3F175C267C201000F6CD70 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		1A3F1756267BE24600F6CD70 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		1A3F1758267BE43F00F6CD70 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		1A3F175A267C13AF00F6CD70 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		1A3F175C267C201000F6CD70 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			children = (
 				1A3F173C267B9FBC00F6CD70 /* Coordinator.swift */,
 				1A3F174F267BB0C900F6CD70 /* Constants.swift */,
+				1A3F175C267C201000F6CD70 /* UIColor+Extension.swift */,
 				1A3F175A267C13AF00F6CD70 /* UILabel+Extension.swift */,
 			);
 			path = Helpers;
@@ -224,6 +227,7 @@
 				1A3F1724267B9DE800F6CD70 /* AppDelegate.swift in Sources */,
 				1A3F1750267BB0C900F6CD70 /* Constants.swift in Sources */,
 				1A3F1752267BB9CD00F6CD70 /* DepartmentVC.swift in Sources */,
+				1A3F175D267C201000F6CD70 /* UIColor+Extension.swift in Sources */,
 				1A3F1741267B9FEB00F6CD70 /* HomeVC.swift in Sources */,
 				1A3F1748267BAD4300F6CD70 /* RandomArt.xcdatamodeld in Sources */,
 				1A3F1744267BACB000F6CD70 /* ApiController.swift in Sources */,

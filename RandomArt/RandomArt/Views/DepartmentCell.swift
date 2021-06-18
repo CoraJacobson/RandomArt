@@ -41,7 +41,7 @@ class DepartmentCell: UICollectionViewCell {
     }
     
     private func setUpView() {
-        backgroundColor = .white
+        backgroundColor = .artLightPurple
         
         layer.cornerRadius = 15
         layer.shadowRadius = 5
